@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "923456110574",
+    "project_id": "mytown-594e9",
+    "storage_bucket": "mytown-594e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923456110574:android:cb5e6033f4b006688198ff",
+        "android_client_info": {
+          "package_name": "com.example.mytown_itfest_2024"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD666OwcpQRU51UWPdE9YEN7GiskYyCuSA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

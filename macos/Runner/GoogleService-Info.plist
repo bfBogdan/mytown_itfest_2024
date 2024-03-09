@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyD1cUMMbtxQr1CIimvGgIrAJo0C9q1oZ9Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>923456110574</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.mytownItfest2024.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>mytown-594e9</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mytown-594e9.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:923456110574:ios:f162c03b13b097208198ff</string>
+</dict>
+</plist>
