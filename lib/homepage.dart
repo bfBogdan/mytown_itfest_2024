@@ -5,9 +5,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mytown_itfest_2024/ios_widgets.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:weather/weather.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String selectedCity;
+  final Weather? weather;
+  const HomePage({super.key, required this.selectedCity, required this.weather});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -15,11 +19,38 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  String? _selectedOption;
+  final List<String> _options = ['Timisoara', 'Bucuresti', 'Cluj-Napoca', 'Iasi'];
 
+  Future<void> saveUserData(int cityId) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('cityId', cityId.toString());
+  }
 
-  @override
-  void initState(){
-    super.initState();
+  void citySelector(){
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Selecteaza un oras:'),
+          content: DropdownButton<String>(
+            value: _selectedOption,
+            onChanged: (String? newValue) {
+              setState(() {
+                _selectedOption = newValue;
+              });
+              Navigator.of(context).pop();
+            },
+            items: _options.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -57,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                                 color: CupertinoColors.activeBlue,
                                 icon: Icon(CupertinoIcons.location_solid),
                                 onPressed: () {
-                                  // Add your callback function logic here
+                                  citySelector();
                                 },
                               ),
                             ),
@@ -87,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      WeatherWidget(5, 'Partial noros'),
+                      WeatherWidget(5, widget.weather?.weatherDescription ?? "No data", widget.selectedCity),
                       AirQualityWidget(43, 36, 23),
                     ],
                   ),
@@ -95,12 +126,12 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      EventsWidget('Timisoara'),
-                      PlacesWidget('Timisoara')
+                      EventsWidget(widget.selectedCity),
+                      PlacesWidget(widget.selectedCity)
                     ],
                   ),
                   const SizedBox(height: 20),
-                  TransportationWidget('Timisoara'),
+                  TransportationWidget(widget.selectedCity),
                   const SizedBox(height: 20),
                   Center(child: NewsLargeWidget('Accident pe DN1', "Un accident a avut loc pe DN1, in apropierea localitatii...")),
                   const SizedBox(height: 20,),

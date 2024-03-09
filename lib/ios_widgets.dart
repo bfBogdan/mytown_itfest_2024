@@ -2,12 +2,14 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mytown_itfest_2024/placesToVisit.dart';
 
 class WeatherWidget extends StatelessWidget {
-  WeatherWidget(this.temperatureInt, this.description, {super.key});
+  WeatherWidget(this.temperatureInt, this.description, this.city, {super.key});
 
   int temperatureInt;
   String description;
+  String city;
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +40,8 @@ class WeatherWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Timisoara',
+              Text(
+                city,
                 style: TextStyle(
                   height: 0.5,
                   fontSize: 20,
@@ -216,7 +218,7 @@ class EventsWidget extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(30),
       onTap: () {
-        Navigator.pushNamed((context), '/events');
+        Navigator.push((context), MaterialPageRoute(builder: (context) => EventsWidget("0")));
       },
       child: Container(
         width: 175,
@@ -295,7 +297,7 @@ class PlacesWidget extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(30),
       onTap: () {
-        Navigator.pushNamed((context), '/placesToVisit');
+        Navigator.push((context), MaterialPageRoute(builder: (context) => PlacesToVisit()));
       },
       child: Container(
         width: 175,
