@@ -1,6 +1,10 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mytown_itfest_2024/homepage.dart';
+import 'package:mytown_itfest_2024/placesToVisit.dart';
+import 'package:mytown_itfest_2024/events.dart';
 
 void main() {
   runApp(const MyTown());
@@ -24,7 +28,8 @@ class MyTown extends StatelessWidget {
       home: page,
       routes: {
         '/homepage': (context) => HomePage(),
-        //'/events': (context) => EventsPage(),
+        '/events': (context) => Events(),
+        '/placesToVisit': (context) => PlacesToVisit(),
       }
     );
   }
