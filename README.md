@@ -1,6 +1,6 @@
   Nume proiect: MyTown
   Descriere proiect:
-  Aplicația MyTown are rolul de a ajuta atât turiștii cât și rezidenții unei municipalități. Cu ajutorul acestei aplicații utilizatorii vor putea accesa din același loc toate informațiile importante ce le pot face șederea sau viața de zi cu zi mult mai ușoară.
+  Aplicația MyTown are rolul de a ajuta atât turiștii cât și rezidenții unei municipalități. Cu ajutorul acestei aplicații utilizatorii vor putea accesa din același loc toate informațiile importante ce le pot face șederea sau viața de zi cu zi mult mai ușoară. Fiecare utilizator își poate personaliza experiența cu aplicația noastră, putând să își creeze un profil custom cu widget-urile pe care dorește să le vadă.
 Funcțiile aplicației:
 1. Lost&Found: funcția principală a acestei aplicații este cea de digitalizare a procesului de găsire a obiectelor pierdute. Cu ajutorul acestei funcții, utilizatorii vor putea să posteze anunțuri cu obiectele pe care le-au pierdut sau obiectele pe care le-au găsit în perimetrul orașului. Cu ajutorul unui AI noi comparăm anunțurile de obiecte pierdute cu cele de obiecte găsite și proprietarul obiectului primește o notificare atunci când obiectul pierdut de el a fost asociat cu un anunț al unui obiect găsit de altă persoană. Prin integrarea AI-ului evităm abuzul unor utilizatori care ar putea să își înșusească obiecte care nu le aparțin.
 2. Informații legate de vreme: aceasta funcție le permite atât turiștilor cât si cetățeniilor să verifice prognoza meteorologică din ziua respectivă din orașul în care se află.
