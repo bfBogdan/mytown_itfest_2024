@@ -10,12 +10,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:uuid/uuid.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 
-class LostSearchForm extends StatefulWidget {
+class FoundSearchForm extends StatefulWidget {
+  const FoundSearchForm({super.key});
+
   @override
-  _LostSearchForm createState() => _LostSearchForm();
+  _FoundSearchForm createState() => _FoundSearchForm();
 }
 
-class _LostSearchForm extends State<LostSearchForm> {
+class _FoundSearchForm extends State<FoundSearchForm> {
   bool isLoading = false;
   final _formKey1 = GlobalKey<FormState>();
   final _formKey2 = GlobalKey<FormState>();
@@ -50,13 +52,7 @@ class _LostSearchForm extends State<LostSearchForm> {
         backgroundColor: Colors.white,
         body: Theme(
           data: ThemeData(
-            /*
-            colorScheme: Theme.of(context).colorScheme.copyWith(
-                  primary: accentColor,
-                  background: accentColor,
-                  secondary: accentColor,
-                ),
-                */
+            colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple),
           ),
           child: Stepper(
             type: stepperType,
@@ -74,7 +70,7 @@ class _LostSearchForm extends State<LostSearchForm> {
                   var generatedUUID = uuid.v1();
                   print(denumireObiect.text);
                   firestoreInstance
-                    .collection("lostObjects")
+                    .collection("foundObjects")
                     .doc(generatedUUID)
                     .set({
                       "uniqueID": generatedUUID,
@@ -87,11 +83,11 @@ class _LostSearchForm extends State<LostSearchForm> {
                   //Get a reference to storage root
                   Reference referenceRoot = FirebaseStorage.instance.ref();
                   Reference referenceDirImages =
-                      referenceRoot.child('lostItems');
+                      referenceRoot.child('foundItems');
 
                   //Create a reference for the image to be stored
                   Reference referenceImageToUpload =
-                      referenceDirImages.child(uuid.v1());
+                      referenceDirImages.child(generatedUUID);
                   
                   //Handle errors/success
                   try {
@@ -164,11 +160,7 @@ class _LostSearchForm extends State<LostSearchForm> {
                         controller: denumireObiect,
                         decoration: const InputDecoration(
                             labelText: 'Denumire obiect',
-                            labelStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w500,
-                                //color: lighterTextColor
-                                )),
+                            ),
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Nu poți lăsa acest spațiu liber!';
@@ -182,11 +174,7 @@ class _LostSearchForm extends State<LostSearchForm> {
                         controller: descObiect,
                         decoration: const InputDecoration(
                             labelText: 'Descrie-ti obiectul pierdut \n(culoare, forma, repere importante)',
-                            labelStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w500,
-                                //color: lighterTextColor
-                                )),
+                            ),
                         validator: (value) {
                           if (value!.isEmpty) {
                             return 'Nu poți lăsa acest spațiu liber!';
@@ -194,40 +182,6 @@ class _LostSearchForm extends State<LostSearchForm> {
                           return null;
                         },
                       ),
-                      /*
-                      TextFormField(
-                        controller: emailController,
-                        decoration: const InputDecoration(
-                            labelText: 'Adresa de email',
-                            labelStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w500,
-                                //color: lighterTextColor
-                                )),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Nu poți lăsa acest spațiu liber!';
-                          }
-                          return null;
-                        },
-                      ),
-                      TextFormField(
-                        controller: phoneNrController,
-                        decoration: const InputDecoration(
-                            labelText: 'Număr de telefon',
-                            labelStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w500,
-                                //color: lighterTextColor
-                                )),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Nu poți lăsa acest spațiu liber!';
-                          }
-                          return null;
-                        },
-                      ),
-                      */
                       MaterialButton(
                         color: Color.fromARGB(255, 233, 43, 76),
                         child: const Text("Pick Image from Gallery",

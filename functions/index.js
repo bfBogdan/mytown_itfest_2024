@@ -36,7 +36,6 @@ exports.checkSearchMatch = onRequest({timeoutSeconds: 1200}, async (req, res) =>
     role: "user",
     content: input,
   });
-  await openai.beta.threads.runs.create(thread.id, {assistant_id: assistant.id});
   // Polling mechanism to see if runStatus is completed
   // This should be made more robust.
   const run = await openai.beta.threads.runs.create(thread.id, {

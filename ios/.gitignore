@@ -9,6 +9,8 @@
 .tags*
 **/.vagrant/
 **/DerivedData/
+node_modules
+functions/.env
 Icon?
 **/Pods/
 **/.symlinks/
