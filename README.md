@@ -1,7 +1,6 @@
-  Nume proiect: MyTown
-  \n Descriere proiect:
-  Aplicația MyTown are rolul de a ajuta atât turiștii cât și rezidenții unei municipalități. Cu ajutorul acestei aplicații utilizatorii vor putea accesa din același loc toate informațiile importante ce le pot face șederea sau viața de zi cu zi mult mai ușoară. Fiecare utilizator își poate personaliza experiența cu aplicația noastră, putând să își creeze un profil custom cu widget-urile pe care dorește să le vadă.
- \n Funcțiile aplicației:
+A. Nume proiect: MyTown
+B. Descriere proiect: Aplicația MyTown are rolul de a ajuta atât turiștii cât și rezidenții unei municipalități. Cu ajutorul acestei aplicații utilizatorii vor putea accesa din același loc toate informațiile importante ce le pot face șederea sau viața de zi cu zi mult mai ușoară. Fiecare utilizator își poate personaliza experiența cu aplicația noastră, putând să își creeze un profil custom cu widget-urile pe care dorește să le vadă.
+C. Funcțiile aplicației:
 1. Lost&Found: funcția principală a acestei aplicații este cea de digitalizare a procesului de găsire a obiectelor pierdute. Cu ajutorul acestei funcții, utilizatorii vor putea să posteze anunțuri cu obiectele pe care le-au pierdut sau obiectele pe care le-au găsit în perimetrul orașului. Cu ajutorul unui AI noi comparăm anunțurile de obiecte pierdute cu cele de obiecte găsite și proprietarul obiectului primește o notificare atunci când obiectul pierdut de el a fost asociat cu un anunț al unui obiect găsit de altă persoană. Prin integrarea AI-ului evităm abuzul unor utilizatori care ar putea să își înșusească obiecte care nu le aparțin.
 2. Informații legate de vreme: aceasta funcție le permite atât turiștilor cât si cetățeniilor să verifice prognoza meteorologică din ziua respectivă din orașul în care se află.
 3. Informații legate de calitatea aerului: utilizatorii au acces la valoarea indexului de calitate a aerului din acel oraș. Aplicația noastră păstrează datele legate de calitatea aerului ușor de înțeles pentru utilizatori.
@@ -10,7 +9,7 @@
 6. Prezetarea evenimentelor culturale ce vor avea loc în perioada imediat următoare în oraș. Utilizatorii au acces la lista evenimentelor din orașul în care se află.
 7. Prezentarea ultimelor știri locale. Această funcție aduce în atentia cetățenilor și a turiștilor mai ușor orice știre locală de actualitate.
 8. Informații importante legate de infrastructura publică din orașul respectiv. Această funcție a fost creeată pentru a veni în ajutorul turiștilor sau a cetățenilor care nu cunosc orașul așa de bine. Aplicația MyTown asigură informații importante legate de infrastructura publică din orașul respectiv, precum: locația si programul centrelor de permanență, a spitalelor, secțiilor de poliție, ambasadelor sau a altor instituții publice.
-   \n Tehnologii folosite:
+D. Tehnologii folosite:
 1. Aplicația MyTown a fost proiectată în Flutter (Dart), fiind gandită să fie o aplicatie Cross-Platform.
 2. Pentru preluarea datelor cu privire la orașe am utilizat mai multe API-uri oferite de OpenWeather, WAQI (World Air Quality Index), SerpApi si OpenAI.
 3. Pentru stocarea și manipularea datelor obținute am folosit FireBase.
