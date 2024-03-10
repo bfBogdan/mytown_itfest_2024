@@ -81,17 +81,10 @@ class WeatherWidget extends StatelessWidget {
 }
 
 class AirQualityWidget extends StatelessWidget {
-  AirQualityWidget(this.pm10Int, this.pm25Int, this.pm1Int, {super.key});
-
-  int pm10Int;
-  int pm25Int;
-  int pm1Int;
+  AirQualityWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    String pm10 = pm10Int.toString();
-    String pm25 = pm25Int.toString();
-    String pm1 = pm1Int.toString();
     return InkWell(
       borderRadius: BorderRadius.circular(30),
       onTap: () {
@@ -127,81 +120,22 @@ class AirQualityWidget extends StatelessWidget {
                   color: CupertinoColors.white,
                 ),
               ),
-              const SizedBox(height: 3),
               const Text('20',
                 style: TextStyle(
                   height: 1.3,
-                  fontSize: 40,
+                  fontSize: 50,
                   fontWeight: FontWeight.w100,
                   color: CupertinoColors.white,
                 ),),
-              const SizedBox(height: 7),
-              // PM10
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'PM10',
-                    style: TextStyle(
-                      height: 0.5,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: CupertinoColors.white,
-                    ),
-                  ),
-                  Text('$pm10 \u00b5g/m\u00b3',
-                  style: const TextStyle(
-                      height: 1.2,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: CupertinoColors.white,
-                    ),),
-                ],
-              ),
-              // PM 2.5
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'PM2.5',
-                    style: TextStyle(
-                      height: 0.5,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: CupertinoColors.white,
-                    ),
-                  ),
-                  Text('$pm25 \u00b5g/m\u00b3',
-                  style: const TextStyle(
-                      height: 1.2,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: CupertinoColors.white,
-                    ),),
-                ],
-              ),
-              // PM 1
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'PM1',
-                    style: TextStyle(
-                      height: 0.5,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: CupertinoColors.white,
-                    ),
-                  ),
-                  Text('$pm1 \u00b5g/m\u00b3',
-                  style: const TextStyle(
-                      height: 1.2,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: CupertinoColors.white,
-                    ),),
-                ],
-              ),
+              const SizedBox(height: 10),
+              const Icon(Icons.wind_power_rounded, color: CupertinoColors.white, size: 27,),
+              const Text('Index AQI',
+                style: TextStyle(
+                  height: 1.3,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: CupertinoColors.white,
+                ),),
               ]
           ),
         ),
@@ -270,10 +204,10 @@ class EventsWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Flexible(
-                      child: Text('Vezi\nmai multe detalii',
+                      child: Text('Vezi mai multe detalii',
                         style: TextStyle(
                           height: 1.1,
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
                           color: CupertinoColors.white,
                         ),),
@@ -305,7 +239,7 @@ class PlacesWidget extends StatelessWidget {
         width: 175,
         height: 175,
         decoration: BoxDecoration(
-          color: CupertinoColors.activeOrange,
+          color: CupertinoColors.systemYellow,
           borderRadius: BorderRadius.circular(30),
           boxShadow: [
             BoxShadow(
@@ -322,37 +256,24 @@ class PlacesWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                  const Text(
-                    'Locuri de vizitat',
-                    style: TextStyle(
-                      height: 0.5,
-                      fontSize: 21,
-                      fontWeight: FontWeight.bold,
-                      color: CupertinoColors.white,
-                    ),
+                const Text(
+                  'Locuri de vizitat',
+                  style: TextStyle(
+                    height: 1,
+                    fontSize: 21,
+                    fontWeight: FontWeight.bold,
+                    color: CupertinoColors.white,
                   ),
-                  const SizedBox(height: 10),
-                  Text('in $selectedTown',
-                    style: const TextStyle(
-                      height: 1.3,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: CupertinoColors.white,
-                    ),),
-                  ],
                 ),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Flexible(
-                      child: Text('Vezi\nmai multe detalii',
+                      child: Text('Monumente, parcuri, restaurante',
                         style: TextStyle(
                           height: 1.1,
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
                           color: CupertinoColors.white,
                         ),),
@@ -409,16 +330,16 @@ class TransportationWidget extends StatelessWidget {
           ],
         ),
         child: Container(
-          padding: const EdgeInsets.only(left: 25, right: 25, top: 20, bottom: 20),
+          padding: const EdgeInsets.only(left: 25, right: 25, top: 25, bottom: 25),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Transport\nin comun',
+                'Transport in comun',
                 style: TextStyle(
                   height: 1.1,
-                  fontSize: 20,
+                  fontSize: 25,
                   fontWeight: FontWeight.bold,
                   color: CupertinoColors.white,
                 ),
@@ -428,16 +349,32 @@ class TransportationWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Flexible(
-                      child: Text(
-                        'Rute,\norare\nși stații',
-                        style: TextStyle(
-                          height: 1.1,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: CupertinoColors.white,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Rute, orare și stații',
+                          style: TextStyle(
+                            height: 1.1,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: CupertinoColors.white,
+                          ),
                         ),
-                      ),
+                        const SizedBox(height: 10),
+                          Text(
+                            'Calatoreste environment-friendly cu Moovit',
+                            style: TextStyle(
+                              height: 1.1,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: CupertinoColors.white,
+                            ),
+                          ),
+                      ],
                     ),
+                  ),
                   Icon(CupertinoIcons.bus, color: CupertinoColors.white, size: 33,),
                 ],
               ),
@@ -559,6 +496,101 @@ class InformationWidget extends StatelessWidget {
             ],
           ),
       )),
+    );
+  }
+}
+
+class NewsLargeWidget extends StatelessWidget {
+  NewsLargeWidget(this.latestNewsTitle, this.lastestNewsDescription,{super.key});
+
+  String latestNewsTitle;
+  String lastestNewsDescription;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(30),
+      onTap: () {
+          
+      },
+      child: Container(
+        width: 360,
+        height: 175,
+        decoration: BoxDecoration(
+          color: CupertinoColors.systemBrown,
+          borderRadius: BorderRadius.circular(30),
+          boxShadow: [
+            BoxShadow(
+              color: CupertinoColors.black.withOpacity(0.15),
+              blurRadius: 10,
+              spreadRadius: 2,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Container(
+          padding: const EdgeInsets.only(left: 25, right: 25, top: 15, bottom: 15),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                  const Text(
+                    'Stiri locale',
+                    style: TextStyle(
+                      height: 1.1,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: CupertinoColors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  const Text('Ultima stire',
+                    style: TextStyle(
+                      height: 1.3,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: CupertinoColors.white,
+                    ),),
+                  const SizedBox(height: 5),
+                  Text(latestNewsTitle,
+                    style: const TextStyle(
+                      height: 1.2,
+                      fontSize: 19,
+                      fontWeight: FontWeight.bold,
+                      color: CupertinoColors.activeOrange,
+                    ),),
+                  Text(lastestNewsDescription,
+                    style: const TextStyle(
+                      height: 1,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: CupertinoColors.white,
+                    ),),
+                  ],
+
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      child: Text('Vezi mai multe stiri',
+                        style: TextStyle(
+                          height: 1.1,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                          color: CupertinoColors.white,
+                        ),),
+                    ),
+                    Icon(Icons.article, color: CupertinoColors.white, size: 33,),
+                  ],
+                )
+              ]
+          ),
+        ),
+      ),
     );
   }
 }

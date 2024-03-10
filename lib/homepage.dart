@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                       //WeatherWidget(_weather!.temperature.toString(), _weather!.weatherDescription ?? "-", widget.city),
                       WeatherWidget(widget.appRes[1].toString() , widget.appRes[2], widget.appRes[0]),
 
-                      AirQualityWidget(43, 36, 23),
+                      AirQualityWidget(),
                     ],
                   ),
                   const SizedBox(height: 20),
@@ -145,9 +145,9 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  TransportationWidget(widget.appRes[0]),
+                  Center(child: TransportationWidget(widget.appRes[0])),
                   const SizedBox(height: 20),
-                  //Center(child: NewsLargeWidget('Accident pe DN1', "Un accident a avut loc pe DN1, in apropierea localitatii...")),
+                  Center(child: NewsLargeWidget('Accident pe DN1', "Un accident a avut loc pe DN1, in apropierea localitatii...")),
                   const SizedBox(height: 20,),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
