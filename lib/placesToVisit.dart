@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class PlacesToVisit extends StatefulWidget {
-  const PlacesToVisit({Key? key}) : super(key: key);
+  final city;
+  PlacesToVisit({super.key, required this.city});
 
   @override
   State<PlacesToVisit> createState() => _PlacesToVisitState();
@@ -49,8 +50,8 @@ class _PlacesToVisitState extends State<PlacesToVisit> {
 
   void placesToVisit() async {
     print('placesToVisit called');
-    const url =
-        'https://serpapi.com/search.json?engine=google_local&q=Places+to+visit&location=Timisoara,+Timis,+Romania&hl=ro&api_key=7f7e1424f6982617431e7611888805511d4bc8cf153284386f3c9cecab6683f0';
+    var url =
+        'https://serpapi.com/search.json?engine=google_local&q=Places+to+visit&location='+ widget.city +'&hl=ro&api_key=7f7e1424f6982617431e7611888805511d4bc8cf153284386f3c9cecab6683f0';
     final uri = Uri.parse(url);
     final response = await http.get(uri);
     //nu schimba in CamelCase ca bubuie codu

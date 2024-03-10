@@ -10,8 +10,8 @@ import 'package:weather/weather.dart';
 
 class HomePage extends StatefulWidget {
 
-  final city;
-  const HomePage({super.key, this.city});
+  final appRes;
+  const HomePage({super.key, this.appRes});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
 
   String? _selectedOption;
   Weather? _weather;
-  final List<String> _options = ['Timisoara', 'Bucuresti', 'Cluj-Napoca', 'Iasi'];
+  final List<String> _options = ['Timisoara', 'Bucharest', 'Cluj-Napoca', 'Iasi'];
 
   Future<void> saveUserData(String cityId) async {
     final prefs = await SharedPreferences.getInstance();
@@ -131,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       //WeatherWidget(_weather!.temperature.toString(), _weather!.weatherDescription ?? "-", widget.city),
-                      WeatherWidget("11", "-", widget.city),
+                      WeatherWidget(widget.appRes[1].toString() , widget.appRes[2], widget.appRes[0]),
 
                       AirQualityWidget(43, 36, 23),
                     ],
@@ -140,14 +140,14 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      EventsWidget(widget.city),
-                      PlacesWidget(widget.city)
+                      EventsWidget(widget.appRes[0]),
+                      PlacesWidget(widget.appRes[0])
                     ],
                   ),
                   const SizedBox(height: 20),
-                  TransportationWidget(widget.city),
+                  TransportationWidget(widget.appRes[0]),
                   const SizedBox(height: 20),
-                  Center(child: NewsLargeWidget('Accident pe DN1', "Un accident a avut loc pe DN1, in apropierea localitatii...")),
+                  //Center(child: NewsLargeWidget('Accident pe DN1', "Un accident a avut loc pe DN1, in apropierea localitatii...")),
                   const SizedBox(height: 20,),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,

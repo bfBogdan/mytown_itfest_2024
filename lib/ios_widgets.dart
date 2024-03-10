@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mytown_itfest_2024/placesToVisit.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'events.dart';
 
 class WeatherWidget extends StatelessWidget {
   WeatherWidget(this.temperatureInt, this.description, this.city, {super.key});
@@ -219,7 +220,7 @@ class EventsWidget extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(30),
       onTap: () {
-        Navigator.push((context), MaterialPageRoute(builder: (context) => EventsWidget("0")));
+        Navigator.push((context), MaterialPageRoute(builder: (context) => Events(city: selectedTown)));
       },
       child: Container(
         width: 175,
@@ -298,7 +299,7 @@ class PlacesWidget extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(30),
       onTap: () {
-        Navigator.push((context), MaterialPageRoute(builder: (context) => PlacesToVisit()));
+        Navigator.push((context), MaterialPageRoute(builder: (context) => PlacesToVisit(city: selectedTown)));
       },
       child: Container(
         width: 175,
