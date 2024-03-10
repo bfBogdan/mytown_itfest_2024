@@ -51,7 +51,7 @@ class _PlacesToVisitState extends State<PlacesToVisit> {
   void placesToVisit() async {
     print('placesToVisit called');
     var url =
-        'https://serpapi.com/search.json?engine=google_local&q=Places+to+visit&location='+ widget.city +'&hl=ro&api_key=7f7e1424f6982617431e7611888805511d4bc8cf153284386f3c9cecab6683f0';
+        'https://serpapi.com/search.json?engine=google_local&q=Places+to+visit&location='+ widget.city +'&hl=ro&api_key=fd47a1058ed9175aa8539692a9ce77d94bd5e810b91b7c9b47e309fa3529d08b';
     final uri = Uri.parse(url);
     final response = await http.get(uri);
     //nu schimba in CamelCase ca bubuie codu

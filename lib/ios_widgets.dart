@@ -1,5 +1,5 @@
 // ignore_for_file: must_be_immutable
-
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mytown_itfest_2024/placesToVisit.dart';
@@ -446,12 +446,43 @@ class LostFoundWidget extends StatelessWidget {
 class InformationWidget extends StatelessWidget {
   const InformationWidget({super.key});
 
+  void _launchButonMaps(String linkuDeMaps) async {
+      await launch(linkuDeMaps);
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(30),
       onTap: () {
-          
+          showMaterialModalBottomSheet(
+          context: context,
+          builder: (context) => SingleChildScrollView(
+            controller: ModalScrollController.of(context),
+            child: Container(
+              child: Column(
+              children: [
+                ElevatedButton(
+                    onPressed: () => _launchButonMaps('https://www.google.com/maps/search/?api=1&query=police+station'),
+                  child: Text('Cea mai apropiata sectie de politie'),
+                ),
+                ElevatedButton(
+                onPressed: () => _launchButonMaps('https://www.google.com/maps/search/?api=1&query=hospital'),
+                child: Text('Cel mai apropiat spital'),
+                ),
+                ElevatedButton(
+                    onPressed: () => _launchButonMaps('https://www.google.com/maps/search/?api=1&query=city+hall'),
+                  child: Text('Primaria orasului'),
+                ),
+                ElevatedButton(
+                    onPressed: () => _launchButonMaps('https://www.google.com/maps/search/?api=1&query=embassy'),
+                  child: Text('Cea mai apropiata ambasada'),
+                ),
+              ],
+        ),
+          ),
+),
+        );
       },
       child: Container(
         width: 175,
