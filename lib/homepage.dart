@@ -1,17 +1,17 @@
 // importuri
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mytown_itfest_2024/ios_widgets.dart';
 import 'package:http/http.dart' as http;
+import 'package:mytown_itfest_2024/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:weather/weather.dart';
 
 class HomePage extends StatefulWidget {
-  final String selectedCity;
-  final Weather? weather;
-  const HomePage({super.key, required this.selectedCity, required this.weather});
+
+  final city;
+  const HomePage({super.key, this.city});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -20,11 +20,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   String? _selectedOption;
+  Weather? _weather;
   final List<String> _options = ['Timisoara', 'Bucuresti', 'Cluj-Napoca', 'Iasi'];
 
-  Future<void> saveUserData(int cityId) async {
+  Future<void> saveUserData(String cityId) async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.setString('cityId', cityId.toString());
+    prefs.setString('cityId', cityId);
   }
 
   void citySelector(){
@@ -36,10 +37,19 @@ class _HomePageState extends State<HomePage> {
           content: DropdownButton<String>(
             value: _selectedOption,
             onChanged: (String? newValue) {
+              saveUserData(newValue ?? "Timisoara");
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => SplashScreen(),
+                ),
+              );
+              //Navigator.push((context), MaterialPageRoute(builder: (context) => SplashScreen()));
+              /*
               setState(() {
                 _selectedOption = newValue;
               });
               Navigator.of(context).pop();
+              */
             },
             items: _options.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
@@ -67,6 +77,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // topper
                   Padding(
                     padding: EdgeInsets.only(top: 30, left: 25, right: 25),
                     child: Row(
@@ -105,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                                 color: CupertinoColors.black,
                                 icon: Icon(Icons.settings),
                                 onPressed: () {
-                                  // Add your callback function logic here
+                                  // ...
                                 },
                               ),
                             ),
@@ -115,10 +126,13 @@ class _HomePageState extends State<HomePage> {
                     )
                   ),
                   const SizedBox(height: 30),
+                  // primul rand cu widget-uri
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      WeatherWidget(5, widget.weather?.weatherDescription ?? "No data", widget.selectedCity),
+                      //WeatherWidget(_weather!.temperature.toString(), _weather!.weatherDescription ?? "-", widget.city),
+                      WeatherWidget("11", "-", widget.city),
+
                       AirQualityWidget(43, 36, 23),
                     ],
                   ),
@@ -126,12 +140,12 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      EventsWidget(widget.selectedCity),
-                      PlacesWidget(widget.selectedCity)
+                      EventsWidget(widget.city),
+                      PlacesWidget(widget.city)
                     ],
                   ),
                   const SizedBox(height: 20),
-                  TransportationWidget(widget.selectedCity),
+                  TransportationWidget(widget.city),
                   const SizedBox(height: 20),
                   Center(child: NewsLargeWidget('Accident pe DN1', "Un accident a avut loc pe DN1, in apropierea localitatii...")),
                   const SizedBox(height: 20,),

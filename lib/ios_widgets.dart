@@ -3,17 +3,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mytown_itfest_2024/placesToVisit.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class WeatherWidget extends StatelessWidget {
   WeatherWidget(this.temperatureInt, this.description, this.city, {super.key});
 
-  int temperatureInt;
+  String temperatureInt;
   String description;
   String city;
 
   @override
   Widget build(BuildContext context) {
-    int temperature = temperatureInt;
+    String temperature = temperatureInt;
     return InkWell(
       borderRadius: BorderRadius.circular(30),
       onTap: () {
@@ -367,16 +368,29 @@ class PlacesWidget extends StatelessWidget {
 }
 
 class TransportationWidget extends StatelessWidget {
+  final String selectedTown;
+
   TransportationWidget(this.selectedTown, {super.key});
 
-  String selectedTown;
+  void _launchMoovitApp() async {
+    const String moovitScheme = 'moovit://nearby?lat=&lon=&partner_id=';
+    const String moovitUrl = 'http://app.appsflyer.com/com.tranzmate?pid=DL&c=';
+
+    try {
+      // Attempt to launch Moovit app
+      await launch(moovitScheme);
+    } catch (e) {
+      // Moovit not installed - send to store
+      await launch(moovitUrl);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(30),
       onTap: () {
-          
+        _launchMoovitApp();
       },
       child: Container(
         width: 360,
@@ -395,131 +409,38 @@ class TransportationWidget extends StatelessWidget {
         ),
         child: Container(
           padding: const EdgeInsets.only(left: 25, right: 25, top: 20, bottom: 20),
-          child: const Column(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-                 Text(
-                  'Transport\nin comun',
-                  style: TextStyle(
-                    height: 1.1,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: CupertinoColors.white,
-                  ),
+              Text(
+                'Transport\nin comun',
+                style: TextStyle(
+                  height: 1.1,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: CupertinoColors.white,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Flexible(
-                      child: Text('Rute,\norare\nsi statii',
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Flexible(
+                      child: Text(
+                        'Rute,\norare\nși stații',
                         style: TextStyle(
                           height: 1.1,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: CupertinoColors.white,
-                        ),),
+                        ),
+                      ),
                     ),
-                    Icon(CupertinoIcons.bus, color: CupertinoColors.white, size: 33,),
-                  ],
-                )
-              ]
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class NewsLargeWidget extends StatelessWidget {
-  NewsLargeWidget(this.latestNewsTitle, this.lastestNewsDescription,{super.key});
-
-  String latestNewsTitle;
-  String lastestNewsDescription;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(30),
-      onTap: () {
-          
-      },
-      child: Container(
-        width: 360,
-        height: 175,
-        decoration: BoxDecoration(
-          color: CupertinoColors.systemBrown,
-          borderRadius: BorderRadius.circular(30),
-          boxShadow: [
-            BoxShadow(
-              color: CupertinoColors.black.withOpacity(0.15),
-              blurRadius: 10,
-              spreadRadius: 2,
-              offset: const Offset(0, 3),
-            ),
-          ],
-        ),
-        child: Container(
-          padding: const EdgeInsets.only(left: 25, right: 25, top: 15, bottom: 15),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                  const Text(
-                    'Stiri locale',
-                    style: TextStyle(
-                      height: 1.1,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: CupertinoColors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  const Text('Ultima stire',
-                    style: TextStyle(
-                      height: 1.3,
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                      color: CupertinoColors.white,
-                    ),),
-                  const SizedBox(height: 5),
-                  Text(latestNewsTitle,
-                    style: const TextStyle(
-                      height: 1.2,
-                      fontSize: 19,
-                      fontWeight: FontWeight.bold,
-                      color: CupertinoColors.activeOrange,
-                    ),),
-                  Text(lastestNewsDescription,
-                    style: const TextStyle(
-                      height: 1,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: CupertinoColors.white,
-                    ),),
-                  ],
-                  
-                ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Flexible(
-                      child: Text('Vezi mai multe stiri',
-                        style: TextStyle(
-                          height: 1.1,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: CupertinoColors.white,
-                        ),),
-                    ),
-                    Icon(Icons.article, color: CupertinoColors.white, size: 33,),
-                  ],
-                )
-              ]
+                  Icon(CupertinoIcons.bus, color: CupertinoColors.white, size: 33,),
+                ],
+              ),
+            ],
           ),
         ),
       ),
